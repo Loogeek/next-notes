@@ -4,7 +4,6 @@ export interface Note {
   content?: string;
 }
 
-
 // export interface Note {
 //   [key: string]: NoteVal
 // }

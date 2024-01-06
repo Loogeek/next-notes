@@ -30,7 +30,7 @@ function NoteListSkeleton() {
   );
 }
 
-export default function Skeleton(props: NoteListSkeletonProps) {
+    export default function Skeleton(props: NoteListSkeletonProps) {
   const { type } = props;
   switch (type) {
     case "noteList":

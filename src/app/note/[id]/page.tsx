@@ -1,3 +1,3 @@
-export default function Page({id}) {
-  return <div>Page </div>
+export default function Page({ id }) {
+  return <div>Page </div>;
 }
