@@ -3,7 +3,7 @@ import Link from 'next/link';
 import cx from 'classnames';
 
 interface EditButtonProps {
-  noteId: boolean | null;
+  noteId: string | null;
   children: React.ReactNode;
 }
 

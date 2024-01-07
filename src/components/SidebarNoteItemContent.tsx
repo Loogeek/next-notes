@@ -22,6 +22,7 @@ export default function SidebarNoteItemContent({
   const prevTitleRef = useRef(title);
   const [isPending] = useTransition();
   const isActive = id === usePathname()?.split('/')[1] || null;
+
   const router = useRouter();
 
   useEffect(() => {

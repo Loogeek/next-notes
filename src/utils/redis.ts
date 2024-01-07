@@ -1,4 +1,5 @@
 import Redis from 'ioredis';
+import { Note } from '@/types/index';
 
 const redis = new Redis();
 
@@ -23,7 +24,9 @@ export const getAllNotes = async () => {
   return await redis.hgetall(REDIS_NAME);
 };
 
-export const getNote = async (uuid: string) => {
+export const getNote = async (
+  uuid: string
+): Promise<Note | null | undefined> => {
   try {
     let note = await redis.hget(REDIS_NAME, uuid);
 
@@ -31,8 +34,12 @@ export const getNote = async (uuid: string) => {
       note = JSON.parse(note);
     }
 
-    return note;
-  } catch (error) {}
+    return note as Note | null;
+  } catch (error) {
+    console.error('getNote error: ', error);
+  }
+
+  return undefined;
 };
 
 export const updateNote = async (uuid: string, data: string) => {
