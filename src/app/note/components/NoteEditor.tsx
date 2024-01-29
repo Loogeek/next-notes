@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useFormState } from 'react-dom';
 import NotePreview from './NotePreview';
 import SaveButton from './SaveButton';
@@ -25,7 +25,6 @@ export default function NoteEditor({
 }: NoteEditorProps) {
   const [title, setTitle] = useState(initialTitle);
   const [body, setBody] = useState(initialBody);
-  console.log(111111111, body);
   const [saveState, saveFormAction] = useFormState<EditorFormState, FormData>(
     saveNote,
     initialState
@@ -38,7 +37,7 @@ export default function NoteEditor({
 
   return (
     <div className='note-editor'>
-      <form className='note-editor-from' autoComplete='off'>
+      <form className='note-editor-form' autoComplete='off'>
         <input type='hidden' name='noteId' value={noteId || ''} />
         <div className='note-editor-menu' role='menubar'>
           <SaveButton formAction={saveFormAction} />
