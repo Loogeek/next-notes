@@ -12,7 +12,11 @@ const allowedAttributes = {
   img: ['src', 'alt'],
 };
 
-export default function NotePreview({ children }: { children: string }) {
+export default function NotePreview({
+  children,
+}: {
+  children: string | undefined;
+}) {
   return (
     <div className='note-preview'>
       <div
