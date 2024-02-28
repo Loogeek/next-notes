@@ -20,7 +20,6 @@ export async function saveNote(prevData: EditorFormState, formData: FormData) {
     content: formData.get('content'),
     updateTime: new Date(),
   };
-  console.log(111111, noteId, data);
   const validated = schema.safeParse(data);
   if (!validated.success) {
     return {
