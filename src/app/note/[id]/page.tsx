@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import { getNote } from '@/utils/redis';
+import { getNote } from '@/utils/strapi';
 import EditButton from '@/components/EditButton';
 import NotePreview from '../components/NotePreview';
 

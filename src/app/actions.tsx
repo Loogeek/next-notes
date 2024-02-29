@@ -3,7 +3,7 @@
 import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
 import { z } from 'zod';
-import { addNote, updateNote, delNote } from '@/utils/redis';
+import { addNote, updateNote, delNote } from '@/utils/strapi';
 import type { EditorFormState } from '@/types';
 
 const schema = z.object({

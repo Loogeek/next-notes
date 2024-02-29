@@ -1,4 +1,4 @@
-import { getAllNotes } from '@/utils/redis';
+import { getAllNotes } from '@/utils/strapi';
 import SidebarNoteItem from './SidebarNoteItem';
 
 export default async function SidebarNoteList() {
