@@ -3,7 +3,7 @@
 import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
 import { z } from 'zod';
-import { addNote, updateNote, delNote } from '@/utils/strapi';
+import { addNote, updateNote, delNote } from '@/utils/prisma';
 import type { EditorFormState } from '@/types';
 
 const schema = z.object({
@@ -17,17 +17,18 @@ export async function saveNote(prevData: EditorFormState, formData: FormData) {
   const noteId = formData.get('noteId') as string;
   const data = {
     title: formData.get('title'),
-    content: formData.get('content'),
+    content: formData.get('body'),
     updateTime: new Date(),
   };
   const validated = schema.safeParse(data);
   if (!validated.success) {
+    console.log('[validated error]:', validated.error);
     return {
       errors: validated.error.issues,
     };
   }
 
-  await sleep(2000);
+  // await sleep(2000);
 
   // 更新数据库
   if (noteId) {
@@ -35,8 +36,10 @@ export async function saveNote(prevData: EditorFormState, formData: FormData) {
     revalidatePath('/', 'layout');
     return { message: 'Update Success!' };
   } else {
-    await addNote(JSON.stringify(data));
-    return { message: 'Add Success!' };
+    const res = await addNote(JSON.stringify(data));
+    revalidatePath('/', 'layout');
+    redirect(`/note/${res}`);
+    // return { message: 'Add Success!' };
   }
 }
 

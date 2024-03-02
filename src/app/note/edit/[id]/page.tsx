@@ -1,4 +1,4 @@
-import { getNote } from '@/utils/strapi';
+import { getNote } from '@/utils/prisma';
 import NoteEditor from '../../components/NoteEditor';
 
 export default async function EditPage({

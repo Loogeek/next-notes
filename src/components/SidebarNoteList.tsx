@@ -1,4 +1,4 @@
-import { getAllNotes } from '@/utils/strapi';
+import { getAllNotes } from '@/utils/prisma';
 import SidebarNoteItem from './SidebarNoteItem';
 
 export default async function SidebarNoteList() {
